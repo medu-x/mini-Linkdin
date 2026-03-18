@@ -9,66 +9,148 @@ body {
     background-color: #f4f9ff;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 28px;
-    width: 100%;
-    background: linear-gradient(90deg, #0369a1, #0284c7);
-    color: #ffffff;
-    box-shadow: 0 4px 16px rgba(3, 105, 161, 0.25);
+/* =============================================
+   LinkedIn-style Header
+   ============================================= */
+
+.ln-header {
     position: sticky;
     top: 0;
     z-index: 100;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-header > :first-child {
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-}
-
-.nav ul {
+.ln-header__inner {
     display: flex;
-    gap: 18px;
-    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1128px;
+    margin: 0 auto;
+    padding: 0 16px;
+    height: 52px;
+}
+
+.ln-header__left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Logo */
+.ln-logo {
+    display: flex;
+    align-items: center;
+    color: #0a66c2;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: opacity 0.15s ease;
+}
+
+.ln-logo:hover {
+    opacity: 0.85;
+}
+
+/* Search */
+.ln-search {
+    position: relative;
+    display: flex;
     align-items: center;
 }
 
-.nav a {
-    display: inline-block;
-    position: relative;
-    padding: 8px 4px;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 600;
-    text-transform: capitalize;
-    transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.nav a:hover {
-    color: #e0f2fe;
-    transform: translateY(-1px);
-}
-
-.nav a::after {
-    content: "";
+.ln-search__icon {
     position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 100%;
-    height: 2px;
-    border-radius: 2px;
-    background: #e0f2fe;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.25s ease;
+    left: 12px;
+    color: #666666;
+    pointer-events: none;
 }
 
-.nav a:hover::after {
-    transform: scaleX(1);
+.ln-search input {
+    width: 280px;
+    height: 34px;
+    padding: 0 12px 0 36px;
+    border: none;
+    border-radius: 4px;
+    background-color: #eef3f8;
+    font-size: 0.85rem;
+    color: #191919;
+    outline: none;
+    transition: width 0.25s ease, box-shadow 0.2s ease;
+}
+
+.ln-search input::placeholder {
+    color: #666666;
+}
+
+.ln-search input:focus {
+    width: 340px;
+    box-shadow: 0 0 0 2px #0a66c2;
+    background-color: #ffffff;
+}
+
+/* Navigation */
+.ln-nav {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    height: 52px;
+}
+
+.ln-nav__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 0 12px;
+    height: 100%;
+    text-decoration: none;
+    color: #666666;
+    font-size: 0.7rem;
+    font-weight: 400;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease;
+    position: relative;
+    white-space: nowrap;
+}
+
+.ln-nav__item svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.ln-nav__item:hover {
+    color: #191919;
+}
+
+.ln-nav__item--active {
+    color: #191919;
+    font-weight: 600;
+    border-bottom-color: #191919;
+}
+
+/* Vertical divider between nav groups */
+.ln-nav__divider {
+    width: 1px;
+    height: 40px;
+    background-color: #e5e7eb;
+    margin: 0 4px;
+    flex-shrink: 0;
+}
+
+/* Profile avatar in nav */
+.ln-nav__avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #e5e7eb;
+}
+
+.ln-nav__profile span {
+    font-size: 0.7rem;
 }
 
 .login-page {
@@ -307,17 +389,19 @@ header > :first-child {
     gap: 16px;
 }
 
-.home-actions a {
+.home-actions .btn-secondary {
     text-decoration: none;
     border-radius: 10px;
     padding: 11px 16px;
     color: #ffffff;
+
+
     font-weight: 700;
     background: linear-gradient(90deg, #0ea5e9, #0284c7);
     transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
-.home-actions a:hover {
+.home-actions .btn-secondary:hover {
     transform: translateY(-1px);
     box-shadow: 0 10px 18px rgba(2, 132, 199, 0.28);
     filter: brightness(1.03);
@@ -386,8 +470,11 @@ header > :first-child {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 140px;
     min-width: 120px;
+    max-width: 140px;
     flex-shrink: 0;
+    overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -416,5 +503,126 @@ header > :first-child {
     font-size: 0.88rem;
     text-transform: capitalize;
     white-space: nowrap;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
+
+/* =============================================
+   Profile Page
+   ============================================= */
+
+/* Remove padding/center from the card on profile page */
+.home-card:has(.cover-image) {
+    padding: 0;
+    text-align: left;
+    overflow: hidden;
+}
+
+/* Cover image */
+.cover-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+}
+
+.cover-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Profile info section */
+.profile-image {
+    position: relative;
+    padding: 0 32px 24px;
+}
+
+.profile-image img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-top: -70px;
+    background-color: #ffffff;
+}
+
+.user-profile-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #191919;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    text-transform: capitalize;
+}
+
+.user-profile-headline {
+    font-size: 1rem;
+    color: #191919;
+    font-weight: 400;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.user-profile-location {
+    font-size: 0.9rem;
+    color: #666666;
+    margin-bottom: 8px;
+}
+
+.user-profile-connections {
+    font-size: 0.9rem;
+    color: #0a66c2;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.user-profile-connections:hover {
+    text-decoration: underline;
+}
+
+/* Action buttons */
+.profile-actions {
+    display: flex;
+    gap: 8px;
+    padding: 0 32px 28px;
+}
+
+.btn-primary {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #0a66c2;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary:hover {
+    background-color: #004182;
+    box-shadow: 0 4px 12px rgba(10, 102, 194, 0.35);
+}
+
+.btn-secondary {
+    padding: 8px 20px;
+    border: 1.5px solid #0a66c2;
+    border-radius: 20px;
+    background-color: transparent;
+    color: #0a66c2;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(10, 102, 194, 0.08);
+    border-color: #004182;
+    box-shadow: 0 2px 8px rgba(10, 102, 194, 0.18);
+}

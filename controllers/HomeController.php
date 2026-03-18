@@ -1,6 +1,6 @@
 <?php
 
-class DashboardController
+class HomeController
 {
     public function index()
     {
@@ -15,7 +15,7 @@ class DashboardController
         $userModel = new UserModel($conn);
         $users = $userModel->getAll();
 
-        // Load the dashboard view
-        require 'views/dashboard/index.php';
+        // Load the home view
+        require 'views/home/index.php';
     }
 }

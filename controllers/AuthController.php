@@ -30,7 +30,7 @@ class AuthController
                 $_SESSION['email']       = $email;
                 $_SESSION['name']        = $row['name'];
                 $_SESSION['profile_url'] = $row['profile_url'];
-                header("Location: index.php?page=dashboard");
+                header("Location: index.php?page=home");
                 exit;
             } else {
                 echo "Incorrect password.";

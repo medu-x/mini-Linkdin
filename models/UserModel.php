@@ -20,6 +20,26 @@ class UserModel
         $stmt->close();
         return $row ?: null;
     }
+    public function getUserById(int $id): ?array
+    {
+        $sql = "SELECT * FROM users WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $row = $stmt->get_result()->fetch_assoc();
+        $stmt->close();
+        return $row ?: null;
+    }
+    public function getUserProfile(string $email): ?array
+    {
+        $sql = "SELECT * FROM users WHERE email = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $row = $stmt->get_result()->fetch_assoc();
+        $stmt->close();
+        return $row ?: null;
+    }
 
     // Insert a new user, returns true on success
     public function create(string $name, string $email, string $hashedPwd, string $profileUrl): bool

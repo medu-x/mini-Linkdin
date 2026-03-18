@@ -3,8 +3,9 @@
 require 'config/configBD.php';
 require 'models/UserModel.php';
 require 'controllers/AuthController.php';
-require 'controllers/DashboardController.php';
+require 'controllers/HomeController.php';
 require 'controllers/LogoutController.php';
+require 'controllers/ProfileController.php';
 // start session
 session_start();
 // get page from url
@@ -14,7 +15,8 @@ $page = $_GET['page'] ?? 'login';
 match($page) {
     'login'     => (new AuthController())->login(),
     'register'  => (new AuthController())->register(),
-    'dashboard' => (new DashboardController())->index(),
+    'home'      => (new HomeController())->index(),
     'logout'    => (new LogoutController())->logout(),
+    'profile'   => (new ProfileController())->index(),
     default     => http_response_code(404),
 };
