@@ -8,7 +8,7 @@ class ProfileController {
         }
         global $conn;
         $userModel = new UserModel($conn);
-        $user = $userModel->getUserById($_GET['user']);
+        $user = $userModel->getUserById($_GET['user']??$_SESSION['id']);
         require 'views/profile/index.php';
     }
 }

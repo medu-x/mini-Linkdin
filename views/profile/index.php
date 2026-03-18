@@ -21,9 +21,32 @@
                 <p class="user-profile-location"><?= $user['location'] ?></p>
                 <p class="user-profile-connections">+600 connections</p>
             </div>
+            <?php if($_SESSION['id'] != $user['id']) { ?>
+
             <div class="profile-actions">
                 <button class="btn-primary">Connect</button>
                 <button class="btn-secondary">Message</button>
+            </div>
+            <?php } ?>
+            <div class="profile-bio">
+                <h2>About</h2>
+                <p><?= $user['bio'] ?></p>
+            </div>
+            <div class="profile-experience">
+                <h2>Experience</h2>
+                <p> ## compane name  + logo ## </p>
+                <p> ## job title ## </p>
+                <p> ## job description ## </p>
+                <p> ## job start date ## </p>
+                <p> ## job end date ## </p>
+                
+            </div>
+            <div class="profile-education">
+                <h2>Education</h2>
+                <p> ## university name + logo ## </p>
+                <p> ## degree ## </p>
+                <p> ## field of study ## </p>
+                <p> ## graduation date ## </p>
             </div>
 
         </section>

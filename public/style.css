@@ -543,11 +543,11 @@ body {
 .profile-image img {
     width: 140px;
     height: 140px;
-    border-radius: 50%;
+    border-radius: 15%;
     object-fit: cover;
     border: 4px solid #ffffff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    margin-top: -70px;
+    margin-top: -90px;
     background-color: #ffffff;
 }
 
@@ -625,4 +625,56 @@ body {
     background-color: rgba(10, 102, 194, 0.08);
     border-color: #004182;
     box-shadow: 0 2px 8px rgba(10, 102, 194, 0.18);
+}
+
+/* =============================================
+   Profile Sections — About, Experience, Education
+   ============================================= */
+
+/* Shared styles for all profile content sections */
+.profile-bio,
+.profile-experience,
+.profile-education {
+    padding: 24px 32px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.profile-bio h2,
+.profile-experience h2,
+.profile-education h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #191919;
+    margin-bottom: 12px;
+}
+
+/* About / Bio */
+.profile-bio p {
+    font-size: 0.95rem;
+    color: #333333;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+/* Experience & Education shared item styles */
+.profile-experience p,
+.profile-education p {
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.5;
+    padding-left: 16px;
+    border-left: 3px solid #0a66c2;
+    margin-bottom: 8px;
+}
+
+.profile-experience p:first-of-type,
+.profile-education p:first-of-type {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #191919;
+}
+
+.profile-experience p:last-child,
+.profile-education p:last-child {
+    margin-bottom: 0;
 }
